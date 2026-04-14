@@ -1,4 +1,6 @@
 import numpy as np
+import math
+
 
 def tanh(x):
     """
@@ -6,5 +8,5 @@ def tanh(x):
     """
     # Write code here
     x = np.asarray(x)
-    exp_x = np.exp(2*x)
-    return (exp_x-1)/(exp_x+1)
+    exp_x = np.where(x>0,np.exp(-2*x),np.exp(2*x))
+    return np.where(x>0,(1-exp_x)/(1+exp_x),(exp_x-1)/(exp_x+1))
